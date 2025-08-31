@@ -19,6 +19,20 @@ class Padel:
 p1 = Padel(10, 10, 30, 150)
 p2 = Padel(360, 10, 30, 150)
 
+def movimientos(padel1: Padel, padel2: Padel):
+    window.fill("black")
+    if keys[pygame.K_w]:
+        padel1.y -= 0.1
+    
+    if keys[pygame.K_s]:
+        padel1.y += 0.1
+
+    if keys[pygame.K_UP]:
+        padel2.y -= 0.1
+    
+    if keys[pygame.K_DOWN]:
+        padel2.y += 0.1
+
 while runnin:
     p1.draw()
     p2.draw()
@@ -26,6 +40,10 @@ while runnin:
         if envent.type == pygame.QUIT:
             runnin = False
 
+    keys = pygame.key.get_pressed()
     pygame.display.update()
+
+    movimientos(p1, p2)
+
 
 pygame.quit()
